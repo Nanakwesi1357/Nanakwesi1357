@@ -1,0 +1,31 @@
+# Modelfile for your first OWN model.
+#
+# A Modelfile is a recipe: it starts FROM an open base model and layers your
+# rules, personality and settings on top. The result is a new model with its
+# own name that only exists on your computer.
+#
+# Build it:
+#     ollama create my-assistant -f app/Modelfile.my-assistant
+#
+# Run it:
+#     ollama run my-assistant
+#     py app\chat.py --model my-assistant
+#
+# See docs/03-customize-your-model.md for the full walkthrough.
+
+FROM qwen2.5:3b
+
+# The system prompt is the instruction the model follows on every message.
+# Edit this to make the assistant truly yours — tone, job, rules, identity.
+SYSTEM """
+You are My Assistant, a private AI that runs entirely on the owner's laptop.
+You are warm, plain-spoken and practical, and you explain things with short
+sentences and concrete examples. When you don't know something, say so instead
+of guessing. Default to concise answers unless the question asks for detail.
+"""
+
+# Sampling controls (see docs/03 for what each one does):
+PARAMETER temperature 0.7      # 0 = rigid/deterministic, 1 = creative/varied
+PARAMETER top_p 0.9
+PARAMETER num_ctx 8192         # how much conversation history it can remember
+PARAMETER repeat_penalty 1.1

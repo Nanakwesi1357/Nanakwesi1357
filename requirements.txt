@@ -1,0 +1,4 @@
+# Optional: only needed for app/openai_client_example.py.
+# The main chat apps (chat.py, one_shot.py) use the Python standard library
+# and need NOTHING installed beyond Python itself.
+openai>=1.30
